@@ -6,11 +6,11 @@ import SignIn from './pages/SignIn';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import PublicRoute from './components/PublicRoute';
-import { Profileprovider } from './context/Profile.context';
+import { ProfileProvider } from './context/Profile.context';
 
 function App() {
   return (
-    <Profileprovider>
+    <ProfileProvider>
       <Switch>
         <PublicRoute path="/signin">
           <SignIn />
@@ -19,7 +19,7 @@ function App() {
           <Home />
         </PrivateRoute>
       </Switch>
-    </Profileprovider>
+    </ProfileProvider>
   );
 }
 
