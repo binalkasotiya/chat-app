@@ -5,9 +5,8 @@ const EditableInput = ({
   initialValue,
   onSave,
   label = null,
-  placeholder = 'write your value',
-  // eslint-disable-next-line no-unused-vars
-  emptymsg = ' input is empty',
+  placeholder = 'Write your value',
+  emptyMsg = 'Input is empty',
   ...inputProps
 }) => {
   const [input, setInput] = useState(initialValue);
@@ -26,8 +25,7 @@ const EditableInput = ({
     const trimmed = input.trim();
 
     if (trimmed === '') {
-      // eslint-disable-next-line no-undef
-      Alert.info(emptymsg, 4000);
+      Alert.info(emptyMsg, 4000);
     }
 
     if (trimmed !== initialValue) {
@@ -51,7 +49,6 @@ const EditableInput = ({
         <InputGroup.Button onClick={onEditClick}>
           <Icon icon={isEditable ? 'close' : 'edit2'} />
         </InputGroup.Button>
-
         {isEditable && (
           <InputGroup.Button onClick={onSaveClick}>
             <Icon icon="check" />

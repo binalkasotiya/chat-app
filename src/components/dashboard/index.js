@@ -1,13 +1,25 @@
 import React from 'react';
-import { Drawer, Button, Divider } from 'rsuite';
-import { useProfile } from '../../context/Profile.context';
+import { Drawer, Button, Divider, Alert } from 'rsuite';
+
 import EditableInput from '../EditableInput';
+import { database } from '../../misc/firebase';
+import { useProfile } from '../../context/Profile.context';
 
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
 
   const onSave = async newData => {
-    console.log(newData);
+    const userNicknameRef = database
+      .ref(`/profiles/${profile.uid}`)
+      .child('name');
+
+    try {
+      await userNicknameRef.set(newData);
+
+      Alert.success('Nickname has been updated', 4000);
+    } catch (err) {
+      Alert.error(err.message, 4000);
+    }
   };
 
   return (
@@ -21,9 +33,9 @@ const Dashboard = ({ onSignOut }) => {
         <Divider />
         <EditableInput
           name="nickname"
-          initialvalue={profile.name}
+          initialValue={profile.name}
           onSave={onSave}
-          label={<h6 className="mb-2"> Nickname</h6>}
+          label={<h6 className="mb-2">Nickname</h6>}
         />
       </Drawer.Body>
 
