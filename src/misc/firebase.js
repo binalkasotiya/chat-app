@@ -4,13 +4,13 @@ import 'firebase/database';
 import 'firebase/storage';
 
 const config = {
-  apiKey: 'AIzaSyB7v2mkR_3GZLTYX2Qv5bWviI6wQzLcNGg',
-  authDomain: 'chit-chat-2cd46.firebaseapp.com',
-  databaseURL: 'https://chit-chat-2cd46-default-rtdb.firebaseio.com',
-  projectId: 'chit-chat-2cd46',
-  storageBucket: 'chit-chat-2cd46.appspot.com',
-  messagingSenderId: '155555235338',
-  appId: '1:155555235338:web:c35f7a0e8272d5b02a01f3',
+  apiKey: 'AIzaSyAKGRssxY4OW9um6RlSbbQ1Fh_lgdWfoPs',
+  authDomain: 'chat-web-app-4ee4c.firebaseapp.com',
+  databaseURL: 'https://chat-web-app-4ee4c.firebaseio.com',
+  projectId: 'chat-web-app-4ee4c',
+  storageBucket: 'chat-web-app-4ee4c.appspot.com',
+  messagingSenderId: '167319830934',
+  appId: '1:167319830934:web:419e220f9fdcd15ea25db7',
 };
 
 const app = firebase.initializeApp(config);
