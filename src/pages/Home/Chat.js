@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { Loader } from 'rsuite';
+
 import ChatTop from '../../components/chat-window/top';
 import ChatBottom from '../../components/chat-window/bottom';
 import Messages from '../../components/chat-window/messages';
@@ -17,15 +18,16 @@ const Chat = () => {
   }
 
   const currentRoom = rooms.find(room => room.id === chatId);
+
   if (!currentRoom) {
-    return <h6 className="text-center mt-page"> Chat {chatId} not found</h6>;
+    return <h6 className="text-center mt-page">Chat {chatId} not found</h6>;
   }
 
-  const { name, dsecription } = currentRoom;
+  const { name, description } = currentRoom;
 
   const currentRoomData = {
     name,
-    dsecription,
+    description,
   };
 
   return (
