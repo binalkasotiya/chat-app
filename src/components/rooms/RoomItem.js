@@ -4,10 +4,11 @@ import ProfileAvatar from '../dashboard/ProfileAvatar';
 
 const RoomItem = ({ room }) => {
   const { createdAt, name, lastMessage } = room;
+
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center">
-        <h3 className="text-disappear"> {name}</h3>
+        <h3 className="text-disappear">{name}</h3>
         <TimeAgo
           datetime={
             lastMessage ? new Date(lastMessage.createdAt) : new Date(createdAt)
@@ -28,12 +29,12 @@ const RoomItem = ({ room }) => {
             </div>
 
             <div className="text-disappear ml-2">
-              <div className="italic">{lastMessage.author.avatar}</div>
+              <div className="italic">{lastMessage.author.name}</div>
               <span>{lastMessage.text}</span>
             </div>
           </>
         ) : (
-          <span> No message yet....</span>
+          <span>No messages yet...</span>
         )}
       </div>
     </div>
