@@ -8,8 +8,8 @@ import { useCurrentRoom } from '../../../context/current-room.context';
 import { auth } from '../../../misc/firebase';
 import { useHover, useMediaQuery } from '../../../misc/custom-hooks';
 import IconBtnControl from './IconBtnControl';
-import ProfileAvatar from '../../dashboard/ProfileAvatar';
 import ImgBtnModal from './ImgBtnModal';
+import ProfileAvatar from '../../dashboard/ProfileAvatar';
 
 const renderFileMessage = file => {
   if (file.contentType.includes('image')) {
@@ -20,11 +20,11 @@ const renderFileMessage = file => {
     );
   }
 
-  return <a href={file.url}> Download {file.name}</a>;
+  return <a href={file.url}>Download {file.name}</a>;
 };
 
 const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
-  const { author, createdAt, file, text, likes, likeCount } = message;
+  const { author, createdAt, text, file, likes, likeCount } = message;
 
   const [selfRef, isHovered] = useHover();
   const isMobile = useMediaQuery('(max-width: 992px)');
