@@ -25,7 +25,7 @@ const renderFileMessage = file => {
       // eslint-disable-next-line jsx-a11y/media-has-caption
       <audio controls>
         <source src={file.url} type="audio/mp3" />
-        Your browser dose not support the audio element.
+        Your browser does not support the audio element.
       </audio>
     );
   }

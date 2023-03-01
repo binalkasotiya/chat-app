@@ -37,7 +37,7 @@ const SignIn = () => {
             <Panel>
               <div className="text-center">
                 <h2>Welcome to Chat</h2>
-                <p>Progressive chat platform for neophytes</p>
+                <p>Progressive Chat Platform For Neophytes</p>
               </div>
 
               <div className="mt-3">

@@ -20,32 +20,47 @@ export function transformToArrWithId(snapVal) {
     : [];
 }
 
-export async function getUserUpdate(userId, keytoUpdate, value, database) {
+export async function getUserUpdate(userId, keyToUpdate, value, db) {
   const updates = {};
 
-  updates[`/profiles/${userId}/${keytoUpdate}`] = value;
+  updates[`/profiles/${userId}/${keyToUpdate}`] = value;
 
-  const getMsgs = database
+  const getMsgs = db
     .ref('/messages')
     .orderByChild('author/uid')
     .equalTo(userId)
     .once('value');
 
-  const getRooms = database
+  const getRooms = db
     .ref('/rooms')
-    .orderByChild('/lastMessage/author/uid')
+    .orderByChild('lastMessage/author/uid')
     .equalTo(userId)
     .once('value');
 
   const [mSnap, rSnap] = await Promise.all([getMsgs, getRooms]);
 
   mSnap.forEach(msgSnap => {
-    updates[`/messages/${msgSnap.key}/author/${keytoUpdate}`] = value;
+    updates[`/messages/${msgSnap.key}/author/${keyToUpdate}`] = value;
   });
 
-  rSnap.forEach(RoomSnap => {
-    updates[`/messages/${RoomSnap.key}/lastMessage/author/${keytoUpdate}`] =
-      value;
+  rSnap.forEach(roomSnap => {
+    updates[`/rooms/${roomSnap.key}/lastMessage/author/${keyToUpdate}`] = value;
   });
+
   return updates;
+}
+
+export function groupBy(array, groupingKeyFn) {
+  return array.reduce((result, item) => {
+    const groupingKey = groupingKeyFn(item);
+
+    if (!result[groupingKey]) {
+      // eslint-disable-next-line no-param-reassign
+      result[groupingKey] = [];
+    }
+
+    result[groupingKey].push(item);
+
+    return result;
+  }, {});
 }

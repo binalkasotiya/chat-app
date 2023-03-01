@@ -64,7 +64,7 @@ export function useHover() {
       return () => {
         node.removeEventListener('mouseover', handleMouseOver);
         node.removeEventListener('mouseout', handleMouseOut);
-      };
+      }; 
     },
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
